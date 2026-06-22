@@ -6,7 +6,9 @@ import ProjectBreakdown from './components/ProjectBreakdown.jsx'
 import AiPanel from './components/AiPanel.jsx'
 import HumanPanel from './components/HumanPanel.jsx'
 import BufferPanel from './components/BufferPanel.jsx'
+import SettingsPanel from './components/SettingsPanel.jsx'
 import Results from './components/Results.jsx'
+import About from './components/About.jsx'
 
 export default function App() {
   const [state, setState] = useState(makeInitialState)
@@ -69,6 +71,9 @@ export default function App() {
             <Results state={state} results={results} />
           </div>
         </div>
+
+        <SettingsPanel state={state} update={update} />
+        <About />
 
         <footer className="pb-8 pt-2 text-center text-[11px] text-slate-400">
           All figures are rough estimates based on your own editable assumptions and on pricing/salary benchmarks verified as
