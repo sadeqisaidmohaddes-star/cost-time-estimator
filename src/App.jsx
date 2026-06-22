@@ -2,13 +2,6 @@ import { useState, useMemo } from 'react'
 import { makeInitialState, PRICES_LAST_CHECKED } from './lib/defaults.js'
 import { computeAll } from './lib/calc.js'
 import { Button } from './components/ui.jsx'
-import ProjectBreakdown from './components/ProjectBreakdown.jsx'
-import AiPanel from './components/AiPanel.jsx'
-import HumanPanel from './components/HumanPanel.jsx'
-import BufferPanel from './components/BufferPanel.jsx'
-import SettingsPanel from './components/SettingsPanel.jsx'
-import Results from './components/Results.jsx'
-import About from './components/About.jsx'
 
 export default function App() {
   const [state, setState] = useState(makeInitialState)
@@ -22,7 +15,6 @@ export default function App() {
     })
 
   const results = useMemo(() => computeAll(state), [state])
-  const expected = results.scenarios.expected
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
@@ -50,30 +42,10 @@ export default function App() {
       </header>
 
       <main className="mx-auto max-w-6xl space-y-4 px-4 py-6">
-        <ProjectBreakdown state={state} update={update} loc={results.loc} />
-
-        <div className="grid gap-4 lg:grid-cols-2">
-          <AiPanel state={state} update={update} expected={expected} />
-          <HumanPanel state={state} update={update} expected={expected} />
-        </div>
-
-        <BufferPanel state={state} update={update} />
-
-        <div className="rounded-xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-1 shadow-sm">
-          <div className="px-3 py-2">
-            <h2 className="text-sm font-semibold text-slate-800">5–6 · Three-point (PERT) results &amp; comparison</h2>
-            <p className="text-xs text-slate-500">
-              Best / Expected / Worst come from the optimistic, PERT-expected and pessimistic LOC totals. Base and buffered
-              shown side by side.
-            </p>
-          </div>
-          <div className="p-3">
-            <Results state={state} results={results} />
-          </div>
-        </div>
-
-        <SettingsPanel state={state} update={update} />
-        <About />
+        {/* Spec sections are added incrementally — one pull request per section. */}
+        <p className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-400">
+          Scaffold ready · total expected LOC {Math.round(results.loc.e).toLocaleString()} · sections load here.
+        </p>
 
         <footer className="pb-8 pt-2 text-center text-[11px] text-slate-400">
           All figures are rough estimates based on your own editable assumptions and on pricing/salary benchmarks verified as
