@@ -6,6 +6,7 @@ import ProjectBreakdown from './components/ProjectBreakdown.jsx'
 import AiPanel from './components/AiPanel.jsx'
 import HumanPanel from './components/HumanPanel.jsx'
 import BufferPanel from './components/BufferPanel.jsx'
+import Results from './components/Results.jsx'
 
 export default function App() {
   const [state, setState] = useState(makeInitialState)
@@ -55,6 +56,19 @@ export default function App() {
         </div>
 
         <BufferPanel state={state} update={update} />
+
+        <div className="rounded-xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-1 shadow-sm">
+          <div className="px-3 py-2">
+            <h2 className="text-sm font-semibold text-slate-800">5–6 · Three-point (PERT) results &amp; comparison</h2>
+            <p className="text-xs text-slate-500">
+              Best / Expected / Worst come from the optimistic, PERT-expected and pessimistic LOC totals. Base and buffered
+              shown side by side.
+            </p>
+          </div>
+          <div className="p-3">
+            <Results state={state} results={results} />
+          </div>
+        </div>
 
         <footer className="pb-8 pt-2 text-center text-[11px] text-slate-400">
           All figures are rough estimates based on your own editable assumptions and on pricing/salary benchmarks verified as
