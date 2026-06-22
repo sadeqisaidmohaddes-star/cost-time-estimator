@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import { makeInitialState, PRICES_LAST_CHECKED } from './lib/defaults.js'
 import { computeAll } from './lib/calc.js'
 import { Button } from './components/ui.jsx'
+import ProjectBreakdown from './components/ProjectBreakdown.jsx'
 
 export default function App() {
   const [state, setState] = useState(makeInitialState)
@@ -42,10 +43,7 @@ export default function App() {
       </header>
 
       <main className="mx-auto max-w-6xl space-y-4 px-4 py-6">
-        {/* Spec sections are added incrementally — one pull request per section. */}
-        <p className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-400">
-          Scaffold ready · total expected LOC {Math.round(results.loc.e).toLocaleString()} · sections load here.
-        </p>
+        <ProjectBreakdown state={state} update={update} loc={results.loc} />
 
         <footer className="pb-8 pt-2 text-center text-[11px] text-slate-400">
           All figures are rough estimates based on your own editable assumptions and on pricing/salary benchmarks verified as
