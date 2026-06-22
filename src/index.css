@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* The whole app runs on Tailwind v4 utility classes. A few small base tweaks: */
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background-color: #f8fafc; /* slate-50 */
+  color: #0f172a; /* slate-900 */
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Hide number-input spinners for a cleaner look; values are still typed/edited freely. */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
