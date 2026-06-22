@@ -4,6 +4,7 @@ import { computeAll } from './lib/calc.js'
 import { Button } from './components/ui.jsx'
 import ProjectBreakdown from './components/ProjectBreakdown.jsx'
 import AiPanel from './components/AiPanel.jsx'
+import HumanPanel from './components/HumanPanel.jsx'
 
 export default function App() {
   const [state, setState] = useState(makeInitialState)
@@ -49,6 +50,7 @@ export default function App() {
 
         <div className="grid gap-4 lg:grid-cols-2">
           <AiPanel state={state} update={update} expected={expected} />
+          <HumanPanel state={state} update={update} expected={expected} />
         </div>
 
         <footer className="pb-8 pt-2 text-center text-[11px] text-slate-400">
