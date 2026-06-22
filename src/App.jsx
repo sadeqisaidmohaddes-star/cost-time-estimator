@@ -3,6 +3,7 @@ import { makeInitialState, PRICES_LAST_CHECKED } from './lib/defaults.js'
 import { computeAll } from './lib/calc.js'
 import { Button } from './components/ui.jsx'
 import ProjectBreakdown from './components/ProjectBreakdown.jsx'
+import AiPanel from './components/AiPanel.jsx'
 
 export default function App() {
   const [state, setState] = useState(makeInitialState)
@@ -16,6 +17,7 @@ export default function App() {
     })
 
   const results = useMemo(() => computeAll(state), [state])
+  const expected = results.scenarios.expected
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
@@ -44,6 +46,10 @@ export default function App() {
 
       <main className="mx-auto max-w-6xl space-y-4 px-4 py-6">
         <ProjectBreakdown state={state} update={update} loc={results.loc} />
+
+        <div className="grid gap-4 lg:grid-cols-2">
+          <AiPanel state={state} update={update} expected={expected} />
+        </div>
 
         <footer className="pb-8 pt-2 text-center text-[11px] text-slate-400">
           All figures are rough estimates based on your own editable assumptions and on pricing/salary benchmarks verified as
