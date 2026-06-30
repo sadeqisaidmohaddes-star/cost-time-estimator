@@ -1,5 +1,7 @@
 # Project Cost & Time Estimator
 
+**[Open the live estimator](https://sadeqisaidmohaddes-star.github.io/cost-time-estimator/)**
+
 A single-page web app that compares the **cost** and **timeline** of building a software
 project two ways — **with AI** and **with human developers** — driven by a lines-of-code
 (LOC) breakdown across project areas.
